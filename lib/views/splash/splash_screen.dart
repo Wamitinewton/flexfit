@@ -1,0 +1,107 @@
+import 'package:clippy_flutter/arc.dart';
+import 'package:flexfit/views/auth/on_boarding.dart';
+import 'package:flexfit/widgets/button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:dot_indication_flutter/dot_indication_flutter.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Stack(
+        children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              // color: Colors.white,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/splash2.jpg'),
+                      fit: BoxFit.cover)),
+              height: height - height / 2,
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Arc(
+              edge: Edge.TOP,
+              arcType: ArcType.CONVEY,
+              height: height / 17.3,
+              child: Container(
+                color: const Color.fromARGB(255, 77, 71, 71),
+                padding: EdgeInsets.only(top: height / 8),
+                height: height / 1.8,
+                width: width,
+                child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Column(children: [
+                      const Text(
+                        'Trusted friends',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        child: Text(
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero eget odio eleifend, eu ultricies felis consequat. Vivamus nec justo nisi. Sed eu turpis vitae nulla consectetur feugiat. Nullam dictum nunc eget nulla varius, eget rutrum ex ullamcorper',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 179, 174, 174),
+                              fontWeight: FontWeight.normal,
+                              fontSize: 15),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      LargeButton(
+                          text: 'Continue',
+                          color: const Color.fromARGB(255, 184, 177, 177),
+                          ontap: () {
+                            Get.offAll(OnboardingScreen());
+                          },
+                          containerColor: Colors.black)
+                    ])),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
