@@ -1,5 +1,6 @@
 import 'package:flexfit/constants.dart';
 import 'package:flexfit/views/auth/register_screen.dart';
+import 'package:flexfit/views/home/home_view.dart';
 import 'package:flexfit/widgets/auth_cards.dart';
 import 'package:flexfit/widgets/custom_flat_button.dart';
 import 'package:flexfit/widgets/lined_text.dart';
@@ -83,7 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 30,
                   ),
                   CustomFlatButton(
-                      onTap: () {},
+                      onTap: () {
+                        Get.offAll(HomePageScreen());
+                      },
                       text: 'Log in',
                       color: const Color.fromARGB(255, 24, 32, 36),
                       textColor: Colors.white),
