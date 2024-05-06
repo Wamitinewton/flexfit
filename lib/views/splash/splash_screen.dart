@@ -1,11 +1,9 @@
 import 'package:clippy_flutter/arc.dart';
-import 'package:flexfit/views/auth/on_boarding.dart';
+import 'package:flexfit/views/auth/login_screen.dart';
+
 import 'package:flexfit/widgets/button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:dot_indication_flutter/dot_indication_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -93,7 +91,7 @@ class _SplashScreenState extends State<SplashScreen>
                           text: 'Continue',
                           color: const Color.fromARGB(255, 184, 177, 177),
                           ontap: () {
-                            Get.offAll(OnboardingScreen());
+                           Get.offAll(LoginScreen());
                           },
                           containerColor: Colors.black)
                     ])),
