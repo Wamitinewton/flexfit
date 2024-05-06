@@ -1,4 +1,5 @@
 import 'package:clippy_flutter/arc.dart';
+import 'package:flexfit/constants.dart';
 import 'package:flexfit/views/auth/login_screen.dart';
 
 import 'package:flexfit/widgets/button.dart';
@@ -65,23 +66,19 @@ class _SplashScreenState extends State<SplashScreen>
                     child: Column(children: [
                       const Text(
                         'Trusted friends',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                        ),
+                        style: kMerriweatherBold24
                       ),
                       const SizedBox(
                         height: 24,
                       ),
-                      const Padding(
+                       Padding(
                         padding: EdgeInsets.only(left: 10, right: 10),
                         child: Text(
                           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero eget odio eleifend, eu ultricies felis consequat. Vivamus nec justo nisi. Sed eu turpis vitae nulla consectetur feugiat. Nullam dictum nunc eget nulla varius, eget rutrum ex ullamcorper',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 179, 174, 174),
-                              fontWeight: FontWeight.normal,
-                              fontSize: 15),
+                          style: kNunitoSansSemiBold16NorgheiSilver.copyWith(
+                            fontSize: 15
+
+                          )
                         ),
                       ),
                       const SizedBox(

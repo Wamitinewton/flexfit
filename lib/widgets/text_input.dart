@@ -1,3 +1,4 @@
+import 'package:flexfit/constants.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldUtil extends StatelessWidget {
@@ -17,9 +18,11 @@ class TextFieldUtil extends StatelessWidget {
         decoration: InputDecoration(
             suffixIcon: suffixIcon,
             hintText: hintText,
-            hintStyle: TextStyle(
-              color: Colors.grey[400],
-            )),
+            hintStyle: kNunitoSansSemiBold12.copyWith(
+              fontSize: 16,
+            )
+            
+            ),
       ),
     );
   }

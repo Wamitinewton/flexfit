@@ -1,5 +1,5 @@
 import 'package:flexfit/constants.dart';
-import 'package:flexfit/views/auth/register_screen.dart';
+import 'package:flexfit/views/auth/login_screen.dart';
 import 'package:flexfit/widgets/auth_cards.dart';
 import 'package:flexfit/widgets/custom_flat_button.dart';
 import 'package:flexfit/widgets/lined_text.dart';
@@ -9,14 +9,14 @@ import 'package:get/get.dart';
 
 import '../../widgets/text_input.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   bool _rememberMe = false;
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
           },
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 20, bottom: 15),
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -39,12 +39,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Enter your credentials to continue',
-                          style: kNunitoSansSemiBold16NorgheiSilver,
+                          'Create an account with us',
+                          style: kNunitoSansSemiBold16NorgheiSilver
                         ),
                       ],
                     ),
                   ),
+                  TextFieldUtil(
+                      hintText: "Enter your username",
+                      suffixIcon: Icon(
+                        Icons.person_2,
+                        color: Colors.grey[400],
+                      )),
                   TextFieldUtil(
                       hintText: "Enter your email",
                       suffixIcon: Icon(
@@ -57,19 +63,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         Icons.visibility,
                         color: Colors.grey[400],
                       )),
+                  TextFieldUtil(
+                      hintText: "confirm your password",
+                      suffixIcon: Icon(
+                        Icons.visibility,
+                        color: Colors.grey[400],
+                      )),
                   const SizedBox(
                     height: 25,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 12),
-                    child: LinedText(
-                        ontap: () {}, height: 1, text: "Forgot password?"),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const SizedBox(
-                    height: 20,
                   ),
                   PowerButtonUtil(
                       value: _rememberMe,
@@ -84,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   CustomFlatButton(
                       onTap: () {},
-                      text: 'Log in',
+                      text: 'Register',
                       color: const Color.fromARGB(255, 24, 32, 36),
                       textColor: Colors.white),
                   const SizedBox(
@@ -137,17 +138,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       )
                     ],
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 40,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 76),
                     child: LinedText(
                       ontap: () {
-                        Get.offAll(RegisterScreen());
+                        Get.offAll(LoginScreen());
                       },
                       height: 1,
-                      text: "Do not have an account?",
+                      text: "Already have an account?",
                     ),
                   ),
                 ],
