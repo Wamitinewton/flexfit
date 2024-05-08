@@ -13,7 +13,7 @@ class BottomNavyBar extends StatelessWidget {
     this.selectedIndex = 0,
     this.showElevation = true,
     this.iconSize = 24,
-    this.backgroundColor,
+    this.backgroundColor = Colors.black,
     this.shadowColor = Colors.black12,
     this.itemCornerRadius = 50,
     this.containerHeight = 56,
@@ -88,7 +88,8 @@ class BottomNavyBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = backgroundColor ?? (Theme.of(context).bottomAppBarTheme.color ?? Colors.white);
+    final bgColor = backgroundColor ??
+        (Theme.of(context).bottomAppBarTheme.color ?? Colors.white);
 
     return Container(
       decoration: BoxDecoration(
@@ -96,7 +97,7 @@ class BottomNavyBar extends StatelessWidget {
         boxShadow: [
           if (showElevation)
             BoxShadow(
-              color: shadowColor,
+              color: shadowColor, 
               blurRadius: blurRadius,
               spreadRadius: spreadRadius,
               offset: shadowOffset,
@@ -222,7 +223,7 @@ class BottomNavyBarItem {
   BottomNavyBarItem({
     required this.icon,
     required this.title,
-    this.activeColor = Colors.blue,
+    this.activeColor = Colors.yellow,
     this.textAlign,
     this.inactiveColor,
   });
