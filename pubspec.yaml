@@ -40,6 +40,7 @@ dependencies:
   dot_indication_flutter: ^0.0.1
   get: ^4.6.6
   flutter_svg: ^2.0.10+1
+  lottie: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/svgs/
+    - assets/lottie/
 
   fonts:
   - family: NunitoSans

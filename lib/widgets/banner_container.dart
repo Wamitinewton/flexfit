@@ -24,3 +24,49 @@ class BannerContainer extends StatelessWidget {
     );
   }
 }
+
+class BoxContent extends StatelessWidget {
+  const BoxContent({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.bigText,
+    required this.smallText,
+  });
+
+  final String title;
+  final AssetImage icon;
+  final String bigText;
+  final String smallText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          title,
+          style: kNunitoSans14.copyWith(fontWeight: FontWeight.bold),
+        ),
+        Image(image: icon),
+        Row(
+          children: [
+            Text(
+              bigText,
+              style: kNunitoSansBold18.copyWith(
+                  fontSize: 20, color: kSnowFlakeWhite),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 7),
+              child: Text(
+                smallText,
+                style: const TextStyle(
+                    color: kChristmasSilver, fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
+        ),
+      ],
+    );
+  }
+}

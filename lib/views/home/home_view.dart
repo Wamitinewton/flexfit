@@ -69,9 +69,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                           Text(
+                          Text(
                             'My goals',
-                            style: kNunitoSans14.copyWith(fontWeight: FontWeight.bold),
+                            style: kNunitoSans14.copyWith(
+                                fontWeight: FontWeight.bold),
                           ),
                           const Padding(
                             padding: EdgeInsets.only(
@@ -111,8 +112,42 @@ class _HomePageScreenState extends State<HomePageScreen> {
                           )
                         ],
                       )),
-                      SizedBox(width: 10,),
-                  BannerContainer(child: Column(), height: 125, width: 185)
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const BannerContainer(
+                      height: 125,
+                      width: 185,
+                      child: Padding(
+                          padding: EdgeInsets.only(left: 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              BoxContent(
+                                  title: 'Height',
+                                  icon: AssetImage(
+                                      'assets/icons/man-standing-up.png'),
+                                  bigText: '181',
+                                  smallText: 'cm'),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              BoxContent(
+                                  title: 'Weight',
+                                  icon: AssetImage('assets/icons/person.png'),
+                                  bigText: '85',
+                                  smallText: 'kg'),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              BoxContent(
+                                  title: 'Age',
+                                  icon:
+                                      AssetImage('assets/icons/person age.png'),
+                                  bigText: '21',
+                                  smallText: 'yo'),
+                            ],
+                          )))
                 ],
               )
             ],
@@ -171,5 +206,3 @@ class _HomePageScreenState extends State<HomePageScreen> {
     );
   }
 }
-
-
