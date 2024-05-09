@@ -1,7 +1,11 @@
 import 'package:flexfit/constants.dart';
 import 'package:flexfit/widgets/banner_container.dart';
+import 'package:flexfit/widgets/calender_slider.dart';
+import 'package:flexfit/widgets/lined_text.dart';
 import 'package:flexfit/widgets/salomon_navbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({super.key});
@@ -11,6 +15,7 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
+  PageController pageController = PageController();
   var _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -149,6 +154,48 @@ class _HomePageScreenState extends State<HomePageScreen> {
                             ],
                           )))
                 ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CalenderSliderBuilder(),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Suggested workout',
+                    style: kNunitoSansSemiBold16.copyWith(
+                        color: kLynxWhite, fontSize: 18),
+                  ),
+                  LinedText(height: 1, text: 'See all', ontap: () {})
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 190,
+                width: double.infinity,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    controller: pageController,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        width: 160,
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            shape: BoxShape.rectangle,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/pexels-anush-1229356.jpg'),
+                                fit: BoxFit.cover)),
+                      );
+                    }),
               )
             ],
           ),

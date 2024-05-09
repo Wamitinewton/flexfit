@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: <Widget>[
             // Use Lottie widget to display animation
             Lottie.asset(
-              'assets/lottie/splash_loading_animation.json', // Replace 'assets/loading.json' with the path to your Lottie JSON file
+              'assets/lottie/splash_loading_animation.json',
               width: 200,
               height: 200,
             ),
