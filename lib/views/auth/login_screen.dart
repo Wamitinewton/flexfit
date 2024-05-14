@@ -1,14 +1,15 @@
 import 'package:flexfit/constants.dart';
+import 'package:flexfit/controllers/auth_controller.dart';
 import 'package:flexfit/views/auth/register_screen.dart';
 import 'package:flexfit/views/home/home_view.dart';
-import 'package:flexfit/widgets/auth_cards.dart';
-import 'package:flexfit/widgets/custom_flat_button.dart';
-import 'package:flexfit/widgets/lined_text.dart';
-import 'package:flexfit/widgets/remember_me_button.dart';
+import 'package:flexfit/common/widgets/auth_cards.dart';
+import 'package:flexfit/common/widgets/custom_flat_button.dart';
+import 'package:flexfit/common/widgets/lined_text.dart';
+import 'package:flexfit/common/widgets/remember_me_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../widgets/text_input.dart';
+import '../../common/widgets/text_input.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,7 +19,17 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthController _authController = Get.put(AuthController());
   bool _rememberMe = false;
+
+  bool _showPassword = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _showPassword = !_showPassword;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,16 +58,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   TextFieldUtil(
+                      controller: _authController.emailController,
+                      obscureText: false,
                       hintText: "Enter your email",
                       suffixIcon: Icon(
                         Icons.email_outlined,
                         color: Colors.grey[400],
                       )),
                   TextFieldUtil(
+                      controller: _authController.pwd,
+                      obscureText: _showPassword,
                       hintText: "Enter your password",
-                      suffixIcon: Icon(
-                        Icons.visibility,
-                        color: Colors.grey[400],
+                      suffixIcon: GestureDetector(
+                        onTap: _togglePasswordVisibility,
+                        child: Icon(
+                          _showPassword
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color:
+                              _showPassword ? Colors.grey[400] : Colors.green,
+                        ),
                       )),
                   const SizedBox(
                     height: 25,

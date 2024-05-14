@@ -1,11 +1,14 @@
+import 'dart:collection';
+
 import 'package:flexfit/constants.dart';
-import 'package:flexfit/widgets/banner_container.dart';
-import 'package:flexfit/widgets/calender_slider.dart';
-import 'package:flexfit/widgets/lined_text.dart';
-import 'package:flexfit/widgets/salomon_navbar.dart';
+import 'package:flexfit/common/widgets/banner_container.dart';
+import 'package:flexfit/common/widgets/calender_slider.dart';
+import 'package:flexfit/common/widgets/lined_text.dart';
+import 'package:flexfit/common/widgets/salomon_navbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({super.key});
@@ -185,18 +188,91 @@ class _HomePageScreenState extends State<HomePageScreen> {
                     controller: pageController,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        width: 160,
-                        decoration: const BoxDecoration(
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          padding: EdgeInsets.symmetric(vertical: 6),
+                          width: 160,
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              shape: BoxShape.rectangle,
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/pexels-anush-1229356.jpg'),
+                                  fit: BoxFit.cover)),
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Container(
+                                  height: 15,
+                                  width: 90,
+                                  decoration: BoxDecoration(
+                                      color: Colors.yellow,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Center(
+                                    child: Text(
+                                      'Weights',
+                                      style: kNunitoSans14,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ));
+                    }),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Daily Challenge',
+                    style: kNunitoSansSemiBold16.copyWith(
+                        color: kLynxWhite, fontSize: 18),
+                  ),
+                  LinedText(height: 1, text: 'See all', ontap: () {})
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 190,
+                width: double.infinity,
+                child: PageView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    controller: pageController,
+                    itemBuilder: (context, index) {
+                      return Stack(children: [
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          padding: EdgeInsets.symmetric(vertical: 6),
+                          width: double.infinity,
+                          decoration: const BoxDecoration(
+                            color: kGraniteGrey,
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                             shape: BoxShape.rectangle,
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/pexels-anush-1229356.jpg'),
-                                fit: BoxFit.cover)),
-                      );
+                          ),
+                        ),
+                        Positioned(
+                          left: 30,
+                          top: 0,
+                          child: Container(
+                            width: 200,
+                            height: 30,
+
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(8)
+                            )
+                          ),
+                        )
+                      ]);
                     }),
-              )
+              ),
             ],
           ),
         ),
@@ -237,7 +313,9 @@ class _HomePageScreenState extends State<HomePageScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.offAll(MapView());
+        },
         // mini: true,
 
         elevation: 8,

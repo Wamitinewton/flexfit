@@ -1,13 +1,14 @@
 import 'package:flexfit/constants.dart';
+import 'package:flexfit/controllers/auth_controller.dart';
 import 'package:flexfit/views/auth/login_screen.dart';
-import 'package:flexfit/widgets/auth_cards.dart';
-import 'package:flexfit/widgets/custom_flat_button.dart';
-import 'package:flexfit/widgets/lined_text.dart';
-import 'package:flexfit/widgets/remember_me_button.dart';
+import 'package:flexfit/common/widgets/auth_cards.dart';
+import 'package:flexfit/common/widgets/custom_flat_button.dart';
+import 'package:flexfit/common/widgets/lined_text.dart';
+import 'package:flexfit/common/widgets/remember_me_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../widgets/text_input.dart';
+import '../../common/widgets/text_input.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -17,7 +18,17 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final AuthController _authController = AuthController();
   bool _rememberMe = false;
+
+  bool _showPassword = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _showPassword = !_showPassword;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,36 +49,54 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          'Create an account with us',
-                          style: kNunitoSansSemiBold16NorgheiSilver
-                        ),
+                        Text('Create an account with us',
+                            style: kNunitoSansSemiBold16NorgheiSilver),
                       ],
                     ),
                   ),
                   TextFieldUtil(
+                      controller: _authController.userName,
+                      obscureText: false,
                       hintText: "Enter your username",
                       suffixIcon: Icon(
                         Icons.person_2,
                         color: Colors.grey[400],
                       )),
                   TextFieldUtil(
+                      controller: _authController.emailController,
+                      obscureText: false,
                       hintText: "Enter your email",
                       suffixIcon: Icon(
                         Icons.email_outlined,
                         color: Colors.grey[400],
                       )),
                   TextFieldUtil(
+                      controller: _authController.pwd,
+                      obscureText: _showPassword,
                       hintText: "Enter your password",
-                      suffixIcon: Icon(
-                        Icons.visibility,
-                        color: Colors.grey[400],
+                      suffixIcon: GestureDetector(
+                        onTap: _togglePasswordVisibility,
+                        child: Icon(
+                            _showPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: _showPassword
+                                ? Colors.grey[400]
+                                : Colors.green),
                       )),
                   TextFieldUtil(
+                      controller: _authController.cfmpwd,
+                      obscureText: _showPassword,
                       hintText: "confirm your password",
-                      suffixIcon: Icon(
-                        Icons.visibility,
-                        color: Colors.grey[400],
+                      suffixIcon: GestureDetector(
+                        onTap: _togglePasswordVisibility,
+                        child: Icon(
+                            _showPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: _showPassword
+                                ? Colors.grey[400]
+                                : Colors.green),
                       )),
                   const SizedBox(
                     height: 25,

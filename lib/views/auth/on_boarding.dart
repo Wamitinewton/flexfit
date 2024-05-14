@@ -2,7 +2,7 @@ import 'package:clippy_flutter/arc.dart';
 import 'package:flexfit/constants.dart';
 import 'package:flexfit/views/auth/login_screen.dart';
 
-import 'package:flexfit/widgets/button.dart';
+import 'package:flexfit/common/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

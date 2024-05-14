@@ -30,20 +30,7 @@ class PowerButtonUtil extends StatelessWidget {
             onTap: () {
               onChanged(!value);
             },
-            child: Container(
-              width: 55,
-              height: 26,
-              decoration: BoxDecoration(
-                color: value ? Colors.green : Colors.grey,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Center(
-                child: Icon(
-                  value ? Icons.notifications_active : Icons.power_off,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            child: Center(child: Switch(value: value, onChanged: onChanged)),
           ),
           SizedBox(
             width: 10,
