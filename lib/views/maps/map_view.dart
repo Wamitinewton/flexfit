@@ -8,15 +8,15 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math' show cos, sqrt, asin;
 
-class MapView extends StatefulWidget {
-  const MapView({super.key});
+class MapViewScreen extends StatefulWidget {
+  const MapViewScreen({super.key});
 
   @override
-  State<MapView> createState() => _MapViewState();
+  State<MapViewScreen> createState() => _MapViewScreenState();
 }
 
-class _MapViewState extends State<MapView> {
-  CameraPosition _intialLocation =
+class _MapViewScreenState extends State<MapViewScreen> {
+  final CameraPosition _intialLocation =
       const CameraPosition(target: LatLng(0.0, 0.0));
   late GoogleMapController mapController;
 
@@ -39,6 +39,7 @@ class _MapViewState extends State<MapView> {
   List<LatLng> polylineCordinates = [];
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
 
   Widget _textField({
     required TextEditingController controller,
@@ -90,7 +91,7 @@ class _MapViewState extends State<MapView> {
         .then((Position position) async {
       setState(() {
         _currentPosition = position;
-        print('CURRENT POS: $_currentPosition');
+        debugPrint('CURRENT POS: $_currentPosition');
         mapController
             .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
           target: LatLng(position.latitude, position.longitude),
@@ -119,7 +120,7 @@ class _MapViewState extends State<MapView> {
         _startAddress = _currentAddress;
       });
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
   }
 
@@ -322,7 +323,7 @@ class _MapViewState extends State<MapView> {
               myLocationButtonEnabled: false,
               mapType: MapType.normal,
               zoomGesturesEnabled: true,
-              zoomControlsEnabled: false,
+              zoomControlsEnabled: true,
               polylines: Set<Polyline>.of(polylines.values),
               onMapCreated: (GoogleMapController controller) {
                 mapController = controller;

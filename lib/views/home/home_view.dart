@@ -1,13 +1,11 @@
-import 'dart:collection';
 
 import 'package:flexfit/constants.dart';
 import 'package:flexfit/common/widgets/banner_container.dart';
 import 'package:flexfit/common/widgets/calender_slider.dart';
 import 'package:flexfit/common/widgets/lined_text.dart';
 import 'package:flexfit/common/widgets/salomon_navbar.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flexfit/views/maps/map_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class HomePageScreen extends StatefulWidget {
@@ -161,8 +159,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
               const SizedBox(
                 height: 20,
               ),
-              CalenderSliderBuilder(),
-              SizedBox(
+              const CalenderSliderBuilder(),
+              const SizedBox(
                 height: 15,
               ),
               Row(
@@ -176,7 +174,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   LinedText(height: 1, text: 'See all', ontap: () {})
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
@@ -189,7 +187,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                     itemBuilder: (context, index) {
                       return Container(
                           margin: const EdgeInsets.symmetric(horizontal: 10),
-                          padding: EdgeInsets.symmetric(vertical: 6),
+                          padding: const EdgeInsets.symmetric(vertical: 6),
                           width: 160,
                           decoration: const BoxDecoration(
                               borderRadius:
@@ -209,7 +207,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                   decoration: BoxDecoration(
                                       color: Colors.yellow,
                                       borderRadius: BorderRadius.circular(8)),
-                                  child: Center(
+                                  child: const Center(
                                     child: Text(
                                       'Weights',
                                       style: kNunitoSans14,
@@ -221,7 +219,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                           ));
                     }),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Row(
@@ -235,7 +233,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   LinedText(height: 1, text: 'See all', ontap: () {})
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
@@ -249,7 +247,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                       return Stack(children: [
                         Container(
                           margin: const EdgeInsets.symmetric(horizontal: 10),
-                          padding: EdgeInsets.symmetric(vertical: 6),
+                          padding: const EdgeInsets.symmetric(vertical: 6),
                           width: double.infinity,
                           decoration: const BoxDecoration(
                             color: kGraniteGrey,
@@ -261,14 +259,11 @@ class _HomePageScreenState extends State<HomePageScreen> {
                           left: 30,
                           top: 0,
                           child: Container(
-                            width: 200,
-                            height: 30,
-
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              borderRadius: BorderRadius.circular(8)
-                            )
-                          ),
+                              width: 200,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(8))),
                         )
                       ]);
                     }),
@@ -314,7 +309,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.offAll(MapView());
+          Get.offAll( MapViewScreen());
         },
         // mini: true,
 
