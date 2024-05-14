@@ -177,10 +177,10 @@ class _MapViewState extends State<MapView> {
       markers.add(startMarker);
       markers.add(destinationMarker);
 
-      print(
+      debugPrint(
         'START COORDINATES: ($startLatitude, $startLongitude)',
       );
-      print(
+      debugPrint(
         'DESTINATION COORDINATES: ($destinationLatitude, $destinationLongitude)',
       );
 
@@ -245,12 +245,12 @@ class _MapViewState extends State<MapView> {
       }
       setState(() {
         _placeDistance = totalDistance.toStringAsFixed(2);
-        print('DISTANCE: $_placeDistance km');
+        debugPrint('DISTANCE: $_placeDistance km');
       });
 
       return true;
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
     return false;
   }
@@ -453,10 +453,12 @@ class _MapViewState extends State<MapView> {
                                     destinationAddressFocusNode.unfocus();
                                     setState(() {
                                       if (markers.isNotEmpty) markers.clear();
-                                      if (polylines.isNotEmpty)
+                                      if (polylines.isNotEmpty) {
                                         polylines.clear();
-                                      if (polylineCordinates.isNotEmpty)
+                                      }
+                                      if (polylineCordinates.isNotEmpty) {
                                         polylineCordinates.clear();
+                                      }
                                       _placeDistance = null;
                                     });
 
