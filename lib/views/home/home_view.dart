@@ -1,4 +1,3 @@
-
 import 'package:flexfit/constants.dart';
 import 'package:flexfit/common/widgets/banner_container.dart';
 import 'package:flexfit/common/widgets/calender_slider.dart';
@@ -244,8 +243,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
                     itemCount: 10,
                     controller: pageController,
                     itemBuilder: (context, index) {
-                      return Stack(children: [
-                        Container(
+                      return Stack(
+                        children: [Container(
                           margin: const EdgeInsets.symmetric(horizontal: 10),
                           padding: const EdgeInsets.symmetric(vertical: 6),
                           width: double.infinity,
@@ -255,17 +254,26 @@ class _HomePageScreenState extends State<HomePageScreen> {
                             shape: BoxShape.rectangle,
                           ),
                         ),
-                        Positioned(
+                         Positioned(
                           left: 30,
                           top: 0,
-                          child: Container(
-                              width: 200,
-                              height: 30,
+                          child: Stack(children: [
+                            Container(
+                                width: 200,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(8))),
+                            Container(
+                              width: 40,
+                              height: 40,
                               decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(8))),
+                                  color: Colors.yellow, shape: BoxShape.circle),
+                            ),
+                          ]),
                         )
-                      ]);
+                        ]
+                      );
                     }),
               ),
             ],
@@ -309,7 +317,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.offAll( MapViewScreen());
+          Get.offAll(const MapViewScreen());
         },
         // mini: true,
 
