@@ -5,6 +5,7 @@ import 'package:flexfit/src/common/widgets/auth_cards.dart';
 import 'package:flexfit/src/common/widgets/custom_flat_button.dart';
 import 'package:flexfit/src/common/widgets/lined_text.dart';
 import 'package:flexfit/src/common/widgets/remember_me_button.dart';
+import 'package:flexfit/src/presentation/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +19,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final AuthController _authController = AuthController();
+  final AuthController _authController = Get.find();
   bool _rememberMe = false;
 
   bool _showPassword = true;
@@ -113,10 +114,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 30,
                   ),
                   CustomFlatButton(
-                      onTap: () {},
+                      onTap: () async {
+                        if (_authController.pwd.text ==
+                            _authController.cfmpwd.text) {
+                          final email = _authController.emailController.text;
+                          final userName = _authController.userName.text;
+                          final password = _authController.pwd.text;
+                          await _authController.signUp(
+                              email, userName, password);
+                              if (_authController.user.value !=null) {
+                                Get.offAll(HomePageScreen());
+                              } else{
+                                Get.snackbar('Error', 'Failed to sign up');
+                              }
+                        } else{
+                          Get.snackbar('Error', 'passwords do not match');
+                        }
+                      },
                       text: 'Register',
                       color: const Color.fromARGB(255, 24, 32, 36),
                       textColor: Colors.white),
+                  // Obx(() {
+                  //   if (_authController.user.value != null) {
+                  //     WidgetsBinding.instance.addPostFrameCallback((_) {
+                  //       Get.offAll(const HomePageScreen());
+                  //     });
+                  //   }
+                  //   return const SizedBox.shrink();
+                  // }),
                   const SizedBox(
                     height: 30,
                   ),
@@ -167,14 +192,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 76),
                     child: LinedText(
                       ontap: () {
-                        Get.offAll(LoginScreen());
+                        Get.offAll(const LoginScreen());
                       },
                       height: 1,
                       text: "Already have an account?",

@@ -1,4 +1,6 @@
+import 'package:flexfit/src/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomFlatButton extends StatefulWidget {
   final VoidCallback onTap;
@@ -21,6 +23,7 @@ class _CustomFlatButtonState extends State<CustomFlatButton>
     with SingleTickerProviderStateMixin {
   late double _scale;
   late AnimationController _controller;
+  final AuthController _authController = Get.find();
 
   @override
   void initState() {
@@ -66,10 +69,12 @@ class _CustomFlatButtonState extends State<CustomFlatButton>
                       offset: Offset(0.0, 5.0))
                 ]),
             child: Center(
-                child: Text(
-              widget.text,
-              style: TextStyle(color: widget.textColor),
-            )),
+                child: _authController.isLoading.value
+                    ? const CircularProgressIndicator()
+                    : Text(
+                        widget.text,
+                        style: TextStyle(color: widget.textColor),
+                      )),
           ),
         ),
       ),

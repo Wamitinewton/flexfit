@@ -9,11 +9,14 @@ class AuthRemoteDataSource {
   AuthRemoteDataSource({required this.client});
 
   Future<AuthModel> signIn(String email, String password) async {
-    final response = await client.post(
-      Uri.parse(''),
-      body: json.encode({'email': email, 'password': password}),
-      headers: {'Content-Type': 'application/json'},
-    );
+    // final response = await client.post(
+    //   Uri.parse(''),
+    //   body: json.encode({'email': email, 'password': password}),
+    //   headers: {'Content-Type': 'application/json'},
+    // );
+    final uri = Uri.parse('https://run.mocky.io/v3/5ad9d8fe-7bcb-49e9-87a1-a680c9ea7ce4');
+    final response = await client.get(uri);
+
     if (response.statusCode == 200) {
       return AuthModel.fromJson(json.decode(response.body));
     } else {
@@ -21,15 +24,19 @@ class AuthRemoteDataSource {
     }
   }
 
-  Future<AuthModel> signUp(String userName, String email, String password) async {
-    final response = await client.post(
-      Uri.parse(''),
-      body: json.encode({'userName': userName, 'email': email, 'password':password}),
-      headers: {'Content-Type': 'application/json'},
-    );
+  Future<AuthModel> signUp(
+      String userName, String email, String password) async {
+    // final response = await client.post(
+    //   Uri.parse(''),
+    //   body: json
+    //       .encode({'userName': userName, 'email': email, 'password': password}),
+    //   headers: {'Content-Type': 'application/json'},
+    // );
+    final uri = Uri.parse('https://run.mocky.io/v3/5ad9d8fe-7bcb-49e9-87a1-a680c9ea7ce4');
+    final response = await client.get(uri);
     if (response.statusCode == 200) {
       return AuthModel.fromJson(json.decode(response.body));
-    } else{
+    } else {
       throw Exception("Failed");
     }
   }

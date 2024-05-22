@@ -17,6 +17,7 @@ class HomePageScreen extends StatefulWidget {
 class _HomePageScreenState extends State<HomePageScreen> {
   PageController pageController = PageController();
   var _currentIndex = 0;
+  final String? userName = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +46,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   ),
                   Column(
                     children: [
-                      Text("Hi, Newton",
+                      Text(userName != null ? "Hi, $userName" : 'Welcome',
                           style: kNunitoSans14.copyWith(
                               color: kSnowFlakeWhite, fontSize: 16)),
                       const SizedBox(
@@ -243,8 +244,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
                     itemCount: 10,
                     controller: pageController,
                     itemBuilder: (context, index) {
-                      return Stack(
-                        children: [Container(
+                      return Stack(children: [
+                        Container(
                           margin: const EdgeInsets.symmetric(horizontal: 10),
                           padding: const EdgeInsets.symmetric(vertical: 6),
                           width: double.infinity,
@@ -254,7 +255,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                             shape: BoxShape.rectangle,
                           ),
                         ),
-                         Positioned(
+                        Positioned(
                           left: 30,
                           top: 0,
                           child: Stack(children: [
@@ -272,8 +273,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                             ),
                           ]),
                         )
-                        ]
-                      );
+                      ]);
                     }),
               ),
             ],

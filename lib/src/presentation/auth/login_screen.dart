@@ -19,7 +19,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final AuthController _authController = Get.put(AuthController());
+  final AuthController _authController = Get.find();
   bool _rememberMe = false;
 
   bool _showPassword = true;
@@ -105,8 +105,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 30,
                   ),
                   CustomFlatButton(
-                      onTap: () {
-                        Get.offAll(HomePageScreen());
+                      onTap: () async {
+                        final email = _authController.emailController.text;
+                        final password = _authController.pwd.text;
+                        await _authController.signIn(email, password);
                       },
                       text: 'Log in',
                       color: const Color.fromARGB(255, 24, 32, 36),
