@@ -1,4 +1,4 @@
-import 'package:flexfit/presentation/splash/splash_screen.dart';
+import 'package:flexfit/src/presentation/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
