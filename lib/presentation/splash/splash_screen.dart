@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flexfit/views/auth/on_boarding.dart';
+import 'package:flexfit/presentation/auth/on_boarding.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

@@ -1,7 +1,6 @@
 import 'package:flexfit/constants.dart';
 import 'package:flexfit/controllers/auth_controller.dart';
-import 'package:flexfit/views/auth/register_screen.dart';
-import 'package:flexfit/views/home/home_view.dart';
+import 'package:flexfit/presentation/auth/login_screen.dart';
 import 'package:flexfit/common/widgets/auth_cards.dart';
 import 'package:flexfit/common/widgets/custom_flat_button.dart';
 import 'package:flexfit/common/widgets/lined_text.dart';
@@ -11,15 +10,15 @@ import 'package:get/get.dart';
 
 import '../../common/widgets/text_input.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final AuthController _authController = Get.put(AuthController());
+class _RegisterScreenState extends State<RegisterScreen> {
+  final AuthController _authController = AuthController();
   bool _rememberMe = false;
 
   bool _showPassword = true;
@@ -41,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
           },
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 20, bottom: 15),
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -50,13 +49,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          'Enter your credentials to continue',
-                          style: kNunitoSansSemiBold16NorgheiSilver,
-                        ),
+                        Text('Create an account with us',
+                            style: kNunitoSansSemiBold16NorgheiSilver),
                       ],
                     ),
                   ),
+                  TextFieldUtil(
+                      controller: _authController.userName,
+                      obscureText: false,
+                      hintText: "Enter your username",
+                      suffixIcon: Icon(
+                        Icons.person_2,
+                        color: Colors.grey[400],
+                      )),
                   TextFieldUtil(
                       controller: _authController.emailController,
                       obscureText: false,
@@ -72,26 +77,29 @@ class _LoginScreenState extends State<LoginScreen> {
                       suffixIcon: GestureDetector(
                         onTap: _togglePasswordVisibility,
                         child: Icon(
-                          _showPassword
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color:
-                              _showPassword ? Colors.grey[400] : Colors.green,
-                        ),
+                            _showPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: _showPassword
+                                ? Colors.grey[400]
+                                : Colors.green),
+                      )),
+                  TextFieldUtil(
+                      controller: _authController.cfmpwd,
+                      obscureText: _showPassword,
+                      hintText: "confirm your password",
+                      suffixIcon: GestureDetector(
+                        onTap: _togglePasswordVisibility,
+                        child: Icon(
+                            _showPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: _showPassword
+                                ? Colors.grey[400]
+                                : Colors.green),
                       )),
                   const SizedBox(
                     height: 25,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 12),
-                    child: LinedText(
-                        ontap: () {}, height: 1, text: "Forgot password?"),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const SizedBox(
-                    height: 20,
                   ),
                   PowerButtonUtil(
                       value: _rememberMe,
@@ -105,10 +113,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 30,
                   ),
                   CustomFlatButton(
-                      onTap: () {
-                        Get.offAll(HomePageScreen());
-                      },
-                      text: 'Log in',
+                      onTap: () {},
+                      text: 'Register',
                       color: const Color.fromARGB(255, 24, 32, 36),
                       textColor: Colors.white),
                   const SizedBox(
@@ -161,17 +167,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       )
                     ],
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 40,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 76),
                     child: LinedText(
                       ontap: () {
-                        Get.offAll(RegisterScreen());
+                        Get.offAll(LoginScreen());
                       },
                       height: 1,
-                      text: "Do not have an account?",
+                      text: "Already have an account?",
                     ),
                   ),
                 ],

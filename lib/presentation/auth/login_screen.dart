@@ -1,6 +1,7 @@
 import 'package:flexfit/constants.dart';
 import 'package:flexfit/controllers/auth_controller.dart';
-import 'package:flexfit/views/auth/login_screen.dart';
+import 'package:flexfit/presentation/auth/register_screen.dart';
+import 'package:flexfit/presentation/home/home_view.dart';
 import 'package:flexfit/common/widgets/auth_cards.dart';
 import 'package:flexfit/common/widgets/custom_flat_button.dart';
 import 'package:flexfit/common/widgets/lined_text.dart';
@@ -10,15 +11,15 @@ import 'package:get/get.dart';
 
 import '../../common/widgets/text_input.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
-  final AuthController _authController = AuthController();
+class _LoginScreenState extends State<LoginScreen> {
+  final AuthController _authController = Get.put(AuthController());
   bool _rememberMe = false;
 
   bool _showPassword = true;
@@ -40,7 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           },
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 15),
+              padding: const EdgeInsets.only(top: 20),
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -49,19 +50,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text('Create an account with us',
-                            style: kNunitoSansSemiBold16NorgheiSilver),
+                        Text(
+                          'Enter your credentials to continue',
+                          style: kNunitoSansSemiBold16NorgheiSilver,
+                        ),
                       ],
                     ),
                   ),
-                  TextFieldUtil(
-                      controller: _authController.userName,
-                      obscureText: false,
-                      hintText: "Enter your username",
-                      suffixIcon: Icon(
-                        Icons.person_2,
-                        color: Colors.grey[400],
-                      )),
                   TextFieldUtil(
                       controller: _authController.emailController,
                       obscureText: false,
@@ -77,29 +72,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       suffixIcon: GestureDetector(
                         onTap: _togglePasswordVisibility,
                         child: Icon(
-                            _showPassword
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: _showPassword
-                                ? Colors.grey[400]
-                                : Colors.green),
-                      )),
-                  TextFieldUtil(
-                      controller: _authController.cfmpwd,
-                      obscureText: _showPassword,
-                      hintText: "confirm your password",
-                      suffixIcon: GestureDetector(
-                        onTap: _togglePasswordVisibility,
-                        child: Icon(
-                            _showPassword
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: _showPassword
-                                ? Colors.grey[400]
-                                : Colors.green),
+                          _showPassword
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color:
+                              _showPassword ? Colors.grey[400] : Colors.green,
+                        ),
                       )),
                   const SizedBox(
                     height: 25,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: LinedText(
+                        ontap: () {}, height: 1, text: "Forgot password?"),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   PowerButtonUtil(
                       value: _rememberMe,
@@ -113,8 +105,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 30,
                   ),
                   CustomFlatButton(
-                      onTap: () {},
-                      text: 'Register',
+                      onTap: () {
+                        Get.offAll(HomePageScreen());
+                      },
+                      text: 'Log in',
                       color: const Color.fromARGB(255, 24, 32, 36),
                       textColor: Colors.white),
                   const SizedBox(
@@ -167,17 +161,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 76),
                     child: LinedText(
                       ontap: () {
-                        Get.offAll(LoginScreen());
+                        Get.offAll(RegisterScreen());
                       },
                       height: 1,
-                      text: "Already have an account?",
+                      text: "Do not have an account?",
                     ),
                   ),
                 ],
