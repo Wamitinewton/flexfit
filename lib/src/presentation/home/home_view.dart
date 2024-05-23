@@ -17,7 +17,7 @@ class HomePageScreen extends StatefulWidget {
 class _HomePageScreenState extends State<HomePageScreen> {
   PageController pageController = PageController();
   var _currentIndex = 0;
-  final String? userName = Get.arguments;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +46,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   ),
                   Column(
                     children: [
-                      Text(userName != null ? "Hi, $userName" : 'Welcome',
+                      Text("Hi, Newton",
                           style: kNunitoSans14.copyWith(
                               color: kSnowFlakeWhite, fontSize: 16)),
                       const SizedBox(
@@ -280,41 +280,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
           ),
         ),
       )),
-      bottomNavigationBar: BottomNavyBar(
-        selectedIndex: _currentIndex,
-        showElevation: true,
-        itemCornerRadius: 24,
-        curve: Curves.easeIn,
-        onItemSelected: (index) => setState(() => _currentIndex = index),
-        items: <BottomNavyBarItem>[
-          BottomNavyBarItem(
-            icon: const Icon(Icons.apps),
-            title: const Text('Home'),
-            // activeColor: Colors.red,
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: const Icon(Icons.history),
-            title: const Text('History'),
-            // activeColor: Colors.purpleAccent,
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: const Icon(Icons.analytics),
-            title: const Text(
-              'Analysis',
-            ),
-            // activeColor: Colors.pink,
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: const Icon(Icons.settings),
-            title: const Text('Settings'),
-            // activeColor: Colors.blue,
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
+           
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.offAll(const MapViewScreen());

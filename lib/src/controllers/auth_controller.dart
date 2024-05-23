@@ -23,6 +23,7 @@ class AuthController extends GetxController {
       Get.offAll(const HomePageScreen(), arguments: user.value?.userName);
     } catch (e) {
       Get.snackbar('Error', 'Failed to sign up');
+      print(e.toString());
     } finally {
       isLoading.value = false;
     }
