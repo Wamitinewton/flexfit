@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flexfit/src/presentation/auth/on_boarding.dart';
+import 'package:flexfit/src/routes/names.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -30,11 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   startSplashScreen() async {
     var duration = const Duration(seconds: 10); // Set the duration of the splash screen
     return Timer(duration, () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const OnboardingScreen(), // Replace this with your onboarding screen widget
-        ),
-      );
+     Get.offAllNamed(AppRoutes.onBoarding);
     });
   }
 

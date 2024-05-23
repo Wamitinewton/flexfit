@@ -6,6 +6,7 @@ import 'package:flexfit/src/common/widgets/custom_flat_button.dart';
 import 'package:flexfit/src/common/widgets/lined_text.dart';
 import 'package:flexfit/src/common/widgets/remember_me_button.dart';
 import 'package:flexfit/src/presentation/home/home_view.dart';
+import 'package:flexfit/src/routes/names.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -199,7 +200,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.only(right: 76),
                     child: LinedText(
                       ontap: () {
-                        Get.offAll(const LoginScreen());
+                        Get.offAllNamed(AppRoutes.login);
                       },
                       height: 1,
                       text: "Already have an account?",

@@ -5,6 +5,7 @@ import 'package:flexfit/src/common/widgets/auth_cards.dart';
 import 'package:flexfit/src/common/widgets/custom_flat_button.dart';
 import 'package:flexfit/src/common/widgets/lined_text.dart';
 import 'package:flexfit/src/common/widgets/remember_me_button.dart';
+import 'package:flexfit/src/routes/names.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -169,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.only(right: 76),
                     child: LinedText(
                       ontap: () {
-                        Get.offAll(RegisterScreen());
+                      Get.offAllNamed(AppRoutes.register);
                       },
                       height: 1,
                       text: "Do not have an account?",

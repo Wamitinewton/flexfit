@@ -1,6 +1,7 @@
 import 'package:flexfit/src/domain/entities.dart';
 import 'package:flexfit/src/domain/use_cases.dart';
 import 'package:flexfit/src/presentation/home/home_view.dart';
+import 'package:flexfit/src/routes/names.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +21,7 @@ class AuthController extends GetxController {
     try {
       isLoading.value = true;
       user.value = await signInUseCase.call(email, password);
-      Get.offAll(const HomePageScreen(), arguments: user.value?.userName);
+      Get.offAllNamed(AppRoutes.application);
     } catch (e) {
       Get.snackbar('Error', 'Failed to sign up');
       print(e.toString());
@@ -33,7 +34,7 @@ class AuthController extends GetxController {
     try {
       isLoading.value = true;
       user.value = await signUpUseCase.call(email, password, userName);
-      Get.offAll(const HomePageScreen(), arguments: user.value?.userName);
+      Get.offAllNamed(AppRoutes.application);
     } catch (e) {
       Get.snackbar('Error', 'Failed to sign in');
     } finally {

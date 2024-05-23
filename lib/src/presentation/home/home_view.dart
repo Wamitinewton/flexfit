@@ -16,7 +16,6 @@ class HomePageScreen extends StatefulWidget {
 
 class _HomePageScreenState extends State<HomePageScreen> {
   PageController pageController = PageController();
-  var _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {

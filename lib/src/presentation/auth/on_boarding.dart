@@ -3,6 +3,7 @@ import 'package:flexfit/constants.dart';
 import 'package:flexfit/src/presentation/auth/login_screen.dart';
 
 import 'package:flexfit/src/common/widgets/button.dart';
+import 'package:flexfit/src/routes/names.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -88,7 +89,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
                           text: 'Continue',
                           color: const Color.fromARGB(255, 184, 177, 177),
                           ontap: () {
-                           Get.offAll(LoginScreen());
+                           Get.offAllNamed(AppRoutes.login);
                           },
                           containerColor: Colors.black)
                     ])),
