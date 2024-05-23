@@ -2,7 +2,6 @@ import 'package:flexfit/constants.dart';
 import 'package:flexfit/src/common/widgets/banner_container.dart';
 import 'package:flexfit/src/common/widgets/calender_slider.dart';
 import 'package:flexfit/src/common/widgets/lined_text.dart';
-import 'package:flexfit/src/common/widgets/salomon_navbar.dart';
 import 'package:flexfit/src/presentation/maps/map_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

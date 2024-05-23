@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flexfit/src/data/data_sources.dart';
+import 'package:flexfit/src/data/image_remote_datasource.dart';
 import 'package:flexfit/src/domain/entities.dart';
-import 'package:flexfit/src/domain/user_repository.dart';
+import 'package:flexfit/src/domain/repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
@@ -22,5 +25,20 @@ class AuthRepositoryImpl implements AuthRepository {
         userName: userModel.userName,
         email: userModel.email,
         password: userModel.password);
+  }
+}
+
+class ImageRepositoryImpl implements ImageRepository {
+  final ImageRemoteDataSource remoteDataSource;
+
+  ImageRepositoryImpl({required this.remoteDataSource});
+  @override
+  Future<String> uploadImage(File image, String userId) async {
+    return await remoteDataSource.uploadImage(image, userId);
+  }
+
+  @override
+  Future<String> fetchImageUrl(String userId) async {
+    return await remoteDataSource.fetchImageUrl(userId);
   }
 }

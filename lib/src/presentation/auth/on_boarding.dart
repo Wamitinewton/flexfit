@@ -1,6 +1,5 @@
 import 'package:clippy_flutter/arc.dart';
 import 'package:flexfit/constants.dart';
-import 'package:flexfit/src/presentation/auth/login_screen.dart';
 
 import 'package:flexfit/src/common/widgets/button.dart';
 import 'package:flexfit/src/routes/names.dart';

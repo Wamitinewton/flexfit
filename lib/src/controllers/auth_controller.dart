@@ -1,6 +1,5 @@
 import 'package:flexfit/src/domain/entities.dart';
 import 'package:flexfit/src/domain/use_cases.dart';
-import 'package:flexfit/src/presentation/home/home_view.dart';
 import 'package:flexfit/src/routes/names.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';

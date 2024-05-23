@@ -1,6 +1,5 @@
 import 'package:flexfit/constants.dart';
 import 'package:flexfit/src/controllers/auth_controller.dart';
-import 'package:flexfit/src/presentation/auth/register_screen.dart';
 import 'package:flexfit/src/common/widgets/auth_cards.dart';
 import 'package:flexfit/src/common/widgets/custom_flat_button.dart';
 import 'package:flexfit/src/common/widgets/lined_text.dart';
