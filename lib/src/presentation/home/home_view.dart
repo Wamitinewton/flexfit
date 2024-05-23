@@ -2,6 +2,7 @@ import 'package:flexfit/constants.dart';
 import 'package:flexfit/src/common/widgets/banner_container.dart';
 import 'package:flexfit/src/common/widgets/calender_slider.dart';
 import 'package:flexfit/src/common/widgets/lined_text.dart';
+import 'package:flexfit/src/controllers/profile_image_controller.dart';
 import 'package:flexfit/src/presentation/maps/map_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,13 @@ class HomePageScreen extends StatefulWidget {
 
 class _HomePageScreenState extends State<HomePageScreen> {
   PageController pageController = PageController();
+  late ImageController imageController;
+  @override
+  void initState() {
+    super.initState();
+    imageController = Get.find<ImageController>();
+    imageController.loadProfileImage();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +37,31 @@ class _HomePageScreenState extends State<HomePageScreen> {
             children: [
               Row(
                 children: [
-                  const CircleAvatar(
-                    radius: 35,
-                    backgroundColor: Colors.black,
-                    child: CircleAvatar(
-                      backgroundImage:
-                          AssetImage('assets/images/pexels-pixabay-45201.jpg'),
-                      radius: 32,
-                      backgroundColor: Colors.white,
-                    ),
-                  ),
+                  Obx(() {
+                    return CircleAvatar(
+                      radius: 35,
+                      backgroundColor: Colors.black,
+                      child: GestureDetector(
+                        onTap: () async {
+                          await imageController.pickImage();
+                        },
+                        child: CircleAvatar(
+                          backgroundImage:
+                              imageController.imageUrl.value.isNotEmpty
+                                  ? NetworkImage(imageController.imageUrl.value)
+                                  : null,
+                          radius: 32,
+                          backgroundColor: Colors.white,
+                          child: imageController.imageUrl.value.isEmail
+                              ? const Icon(
+                                  Icons.person,
+                                  size: 40,
+                                )
+                              : null,
+                        ),
+                      ),
+                    );
+                  }),
                   const SizedBox(
                     width: 10,
                   ),
@@ -278,7 +301,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
           ),
         ),
       )),
-           
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.offAll(const MapViewScreen());
