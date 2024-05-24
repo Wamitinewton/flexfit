@@ -53,11 +53,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               const SizedBox(
                                 height: 95,
                               ),
-                              const Text('Newton Wamiti'),
+                              const Text('Newton Wamiti',
+                                  style: kNunitoSansSemiBold18),
                               const SizedBox(
                                 height: 5,
                               ),
-                              const Text('wamitinewton@gmail.com'),
+                              const Text(
+                                'wamitinewton@gmail.com',
+                                style: kNunitoSans14,
+                              ),
                               const SizedBox(
                                 height: 10,
                               ),
