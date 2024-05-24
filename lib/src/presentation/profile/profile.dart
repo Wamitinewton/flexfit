@@ -1,4 +1,5 @@
 import 'package:flexfit/constants.dart';
+import 'package:flexfit/src/presentation/profile/grid_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -47,53 +48,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Container(
                           width: double.infinity,
                           color: kLynxWhite,
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              const SizedBox(
+                              SizedBox(
                                 height: 95,
                               ),
-                              const Text('Newton Wamiti',
+                              Text('Newton Wamiti',
                                   style: kNunitoSansSemiBold18),
-                              const SizedBox(
+                              SizedBox(
                                 height: 5,
                               ),
-                              const Text(
+                              Text(
                                 'wamitinewton@gmail.com',
                                 style: kNunitoSans14,
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 10,
                               ),
                               Expanded(
-                                  child: GridView.builder(
-                                      gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 3,
-                                      ),
-                                      itemCount: 6,
-                                      physics:
-                                          const AlwaysScrollableScrollPhysics(),
-                                      itemBuilder: (context, index) {
-                                        return Container(
-                                          height: 60,
-                                          width: 60,
-                                          margin: const EdgeInsets.all(9.5),
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 15),
-                                          decoration: BoxDecoration(
-                                              color: kLynxWhite,
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              boxShadow: const [
-                                                BoxShadow(
-                                                  color: Colors.black12,
-                                                  blurRadius: 4,
-                                                  spreadRadius: 2,
-                                                )
-                                              ]),
-                                        );
-                                      }))
+                                  child: GridBuilderScreen())
                             ],
                           )))
                 ],
