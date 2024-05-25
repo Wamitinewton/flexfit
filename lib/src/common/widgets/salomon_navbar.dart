@@ -1,5 +1,6 @@
 // library bottom_navy_bar;
 
+import 'package:flexfit/constants.dart';
 import 'package:flutter/material.dart';
 
 /// A beautiful and animated bottom navigation that paints a rounded shape
@@ -13,7 +14,7 @@ class BottomNavyBar extends StatelessWidget {
     this.selectedIndex = 0,
     this.showElevation = true,
     this.iconSize = 24,
-    this.backgroundColor = Colors.black,
+    this.backgroundColor = kLeadBlack,
     this.shadowColor = Colors.black12,
     this.itemCornerRadius = 50,
     this.containerHeight = 56,

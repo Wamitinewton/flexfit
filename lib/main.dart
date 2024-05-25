@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: AppPages.initial,
       initialBinding: AppBindings(),
 
-      // home:ApplicationPage()
+      // home:EditProfilescreen(),
 
       getPages: AppPages.routes,
     );

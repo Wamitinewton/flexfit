@@ -1,10 +1,7 @@
-import 'dart:collection';
-
 import 'package:flexfit/constants.dart';
 import 'package:flexfit/src/presentation/about/about_app.dart';
 import 'package:flexfit/src/presentation/analysis/analysis.dart';
 import 'package:flexfit/src/presentation/auth/login_screen.dart';
-import 'package:flexfit/src/presentation/history/history.dart';
 import 'package:flexfit/src/presentation/maps/map_view.dart';
 import 'package:flexfit/src/presentation/nutrition/nutrition_recommendation.dart';
 import 'package:flexfit/src/presentation/profile/edit_profile.dart';
@@ -20,7 +17,6 @@ class GridBuilderScreen extends StatefulWidget {
 }
 
 class _GridBuilderScreenState extends State<GridBuilderScreen> {
-
   int _selectedIndex = 0;
   static final List<Widget> _screens = [
     const EditProfilescreen(),
@@ -29,6 +25,41 @@ class _GridBuilderScreenState extends State<GridBuilderScreen> {
     const AnalysisPage(),
     const AboutApplication(),
     const LoginScreen()
+  ];
+  static final List<String> _texts = [
+    'Edit Profile',
+    'Map View',
+    'Nutrition',
+    'Analysis',
+    'About us',
+    'Log out'
+  ];
+
+  static final List<Icon> _icons = [
+    const Icon(
+      Icons.person_2,
+      color: kOffBlack,
+    ),
+    const Icon(
+      Icons.directions,
+      color: kOffBlack,
+    ),
+    const Icon(
+      Icons.restaurant_outlined,
+      color: kOffBlack,
+    ),
+    const Icon(
+      Icons.analytics_rounded,
+      color: kOffBlack,
+    ),
+    const Icon(
+      Icons.description,
+      color: kOffBlack,
+    ),
+    const Icon(
+      Icons.logout_sharp,
+      color: kOffBlack,
+    )
   ];
 
   @override
@@ -69,19 +100,17 @@ class _GridBuilderScreenState extends State<GridBuilderScreen> {
                     )
                   ]),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                 
+                  _icons[index],
+                  Text(
+                    _texts[index],
+                    style: kNunitoSansBold16,
+                  )
                 ],
               ),
             ),
           );
         });
   }
-}
-
-class GridViewDetails {
-  String? title;
-  Icon? assetImage;
-
-  GridViewDetails({this.assetImage, this.title});
 }
