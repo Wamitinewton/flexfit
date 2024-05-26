@@ -1,3 +1,3 @@
 class Secrets {
-  static const API_KEY = "AIzaSyCSZAhSOlyhFaIcFPiL3l4pH8H8Jew1dVI";
+  static const API_KEY = "AIzaSyD1q5NSzDj_ZtfzQKGJcaIv8siKCvtdHsE";
 }
