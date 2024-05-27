@@ -15,6 +15,23 @@ class HomePageScreen extends StatefulWidget {
 
 class _HomePageScreenState extends State<HomePageScreen> {
   PageController pageController = PageController();
+  static final List<String> _workouts = [
+    'Biking',
+    'Swimming',
+    'Run',
+    'Sprint run',
+    'walk',
+    'Weights'
+  ];
+
+  static final List<AssetImage> _images = [
+    const AssetImage('assets/images/bike1.jpg'),
+    const AssetImage('assets/images/swimming.jpg'),
+    const AssetImage('assets/images/run.jpg'),
+    const AssetImage('assets/images/sprint.jpg'),
+    const AssetImage('assets/images/walk.jpg'),
+    const AssetImage('assets/images/pexels-anush-1229356.jpg'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -180,39 +197,51 @@ class _HomePageScreenState extends State<HomePageScreen> {
                 width: double.infinity,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 10,
+                    itemCount: _workouts.length,
                     controller: pageController,
                     itemBuilder: (context, index) {
                       return Container(
                           margin: const EdgeInsets.symmetric(horizontal: 10),
                           padding: const EdgeInsets.symmetric(vertical: 6),
                           width: 160,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
+                                  const BorderRadius.all(Radius.circular(20)),
                               shape: BoxShape.rectangle,
                               image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/pexels-anush-1229356.jpg'),
-                                  fit: BoxFit.cover)),
+                                  image: _images[index], fit: BoxFit.cover)),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Align(
                                 alignment: Alignment.topLeft,
-                                child: Container(
-                                  height: 15,
-                                  width: 90,
-                                  decoration: BoxDecoration(
-                                      color: Colors.yellow,
-                                      borderRadius: BorderRadius.circular(8)),
-                                  child: const Center(
-                                    child: Text(
-                                      'Weights',
-                                      style: kNunitoSans14,
-                                    ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Container(
+                                    height: 15,
+                                    width: 90,
+                                    decoration: BoxDecoration(
+                                        color: Colors.yellow,
+                                        borderRadius: BorderRadius.circular(3)),
+                                    child:
+                                        Center(child: Text(_workouts[index])),
                                   ),
                                 ),
                               ),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: TextButton(
+                                  onPressed: () {},
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(kOffBlack)),
+                                  child: Text(
+                                    'Start wotkout',
+                                    style: kNunitoSansSemiBold20White.copyWith(
+                                        fontSize: 13),
+                                  ),
+                                ),
+                              )
                             ],
                           ));
                     }),
@@ -266,7 +295,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                             Container(
                               width: 40,
                               height: 40,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   color: Colors.yellow, shape: BoxShape.circle),
                             ),
                           ]),
@@ -278,7 +307,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
           ),
         ),
       )),
-           
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.offAll(const MapViewScreen());
