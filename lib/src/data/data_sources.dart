@@ -14,7 +14,8 @@ class AuthRemoteDataSource {
     //   body: json.encode({'email': email, 'password': password}),
     //   headers: {'Content-Type': 'application/json'},
     // );
-    final uri = Uri.parse('https://run.mocky.io/v3/5ad9d8fe-7bcb-49e9-87a1-a680c9ea7ce4');
+    final uri = Uri.parse(
+        'https://run.mocky.io/v3/5ad9d8fe-7bcb-49e9-87a1-a680c9ea7ce4');
     final response = await client.get(uri);
 
     if (response.statusCode == 200) {
@@ -32,7 +33,8 @@ class AuthRemoteDataSource {
     //       .encode({'userName': userName, 'email': email, 'password': password}),
     //   headers: {'Content-Type': 'application/json'},
     // );
-    final uri = Uri.parse('https://run.mocky.io/v3/5ad9d8fe-7bcb-49e9-87a1-a680c9ea7ce4');
+    final uri = Uri.parse(
+        'https://run.mocky.io/v3/5ad9d8fe-7bcb-49e9-87a1-a680c9ea7ce4');
     final response = await client.get(uri);
     if (response.statusCode == 200) {
       return AuthModel.fromJson(json.decode(response.body));

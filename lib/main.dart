@@ -1,4 +1,5 @@
 import 'package:flexfit/src/bindings.dart';
+import 'package:flexfit/src/presentation/activity/current_activity.dart';
 import 'package:flexfit/src/routes/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -15,11 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
-      initialRoute: AppPages.initial,
+      // initialRoute: AppPages.initial,
       initialBinding: AppBindings(),
 
-      // home:EditProfilescreen(),
+      home:CurrentActivityScreen(),
 
       getPages: AppPages.routes,
     );
