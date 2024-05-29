@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
-      // initialRoute: AppPages.initial,
+      initialRoute: AppPages.initial,
       initialBinding: AppBindings(),
 
-      home:CurrentActivityScreen(),
+      // home:CurrentActivityScreen(),
 
       getPages: AppPages.routes,
     );

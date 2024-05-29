@@ -2,6 +2,7 @@ import 'package:flexfit/constants.dart';
 import 'package:flexfit/src/common/widgets/container.dart';
 import 'package:flexfit/src/common/widgets/calender_slider.dart';
 import 'package:flexfit/src/common/widgets/lined_text.dart';
+import 'package:flexfit/src/presentation/activity/current_activity.dart';
 import 'package:flexfit/src/presentation/maps/map_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -231,10 +232,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
                               Align(
                                 alignment: Alignment.bottomCenter,
                                 child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.offAll(CurrentActivityScreen());
+                                  },
                                   style: ButtonStyle(
                                       backgroundColor:
-                                          MaterialStateProperty.all(kOffBlack)),
+                                          WidgetStateProperty.all(kOffBlack)),
                                   child: Text(
                                     'Start wotkout',
                                     style: kNunitoSansSemiBold20White.copyWith(
